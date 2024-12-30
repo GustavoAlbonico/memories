@@ -25,7 +25,7 @@ const Home = () => {
     <div className="home">
       <h2>Confira as últimas Memórias</h2>
       <div className="memories-container">
-        {memories.lenght > 0 && memories.map((memory) => (
+        {memories.length > 0 && memories.map((memory) => (
           <div className="memory" key={memory._id}>
             <img src={`${axios.defaults.baseURL}${memory.src}`} alt={memory.title} />
             <p>{memory.title}</p>

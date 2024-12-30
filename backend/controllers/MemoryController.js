@@ -49,13 +49,13 @@ const getMemories = async (req, res) => {
 
 const getMemory = async (req, res) => {
     try {
-        const memory = await Memory.findById(req.params.di);
+        const memory = await Memory.findById(req.params.id);
 
         if (!memory) {
             return res.status(404).json({ msg: "Memória não encontrada!" })
         }
 
-        res.josn(memory);
+        res.json(memory);
     } catch (error) {
         res.status(500).send("Ocorreu um erro!")
     }
@@ -63,7 +63,7 @@ const getMemory = async (req, res) => {
 
 const deleteMemory = async (req, res) => {
     try {
-        const memory = await Memory.findByIdAndDelete(req.params.di);
+        const memory = await Memory.findByIdAndDelete(req.params.id);
 
         if (!memory) {
             return res.status(404).json({ msg: "Memória não encontrada!" })
@@ -71,7 +71,7 @@ const deleteMemory = async (req, res) => {
 
         removeOldImage(memory);
 
-        res.josn({ msg: "Memória exlcuida" });
+        res.json({ msg: "Memória exlcuida" });
     } catch (error) {
         res.status(500).send("Ocorreu um erro!")
     }
@@ -117,7 +117,7 @@ const updateMemory = async (req, res) => {
 
 const toggleFavorite = async (req, res) => {
     try {
-        const memory = await Memory.findById(req.params.di);
+        const memory = await Memory.findById(req.params.id);
 
         if (!memory) {
             return res.status(404).json({ msg: "Memória não encontrada!" })
@@ -127,7 +127,7 @@ const toggleFavorite = async (req, res) => {
 
         await memory.save();
 
-        res.josn({ msg: "Adicionada aos favoritos", memory });
+        res.json({ msg: "Adicionada aos favoritos", memory });
     } catch (error) {
         res.status(500).send("Ocorreu um erro!")
     }

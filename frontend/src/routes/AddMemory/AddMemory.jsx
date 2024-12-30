@@ -15,8 +15,8 @@ const AddMemory = () => {
 
     const formData = new FormData();
     formData.append("image", image);
-    formData.append("image", inputs.title);
-    formData.append("image", inputs.description);
+    formData.append("title", inputs.title);
+    formData.append("description", inputs.description);
 
     try {
       const response = await axios.post("/memories", formData, {
