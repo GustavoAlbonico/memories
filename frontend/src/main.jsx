@@ -20,7 +20,9 @@ const router = createBrowserRouter([
       { path: "/memories/:id", element: <Memory /> },
     ],
   },
-]);
+],
+  { basename: "/memories" }
+);
 
 
 createRoot(document.getElementById('root')).render(
